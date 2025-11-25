@@ -1,0 +1,2776 @@
+{
+  "name": "AgenteIA V2.0.3 - YAYA",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2f2f8f72-f4f3-4913-8f38-f17fd05fcc6b",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "209b119a-f0bd-42a0-9686-daebf3d9e99d",
+              "name": "tts",
+              "value": "={{ $('Code in JavaScript').item.json.tipo_respuesta }}",
+              "type": "string"
+            },
+            {
+              "id": "65ba496f-0b70-4eb1-bb9c-c6f8fc1c565f",
+              "name": "motor_tts",
+              "value": "eleven",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -160,
+        1232
+      ],
+      "id": "789c7b6c-6e2d-48c6-9231-8beeee0aeb9e",
+      "name": "CREAR JSON",
+      "notes": "motor_tts puede ser o \"openai\" o \"eleven\""
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.resumenContexto }}{{ $json.contenido }}",
+        "options": {
+          "systemMessage": "=[SYSTEM CONTEXT]\n\nEres un asistente virtual inteligente de **Ya Ya**, una fintech colombiana que ofrece tarjetas de crédito digitales y soluciones de pago. \nTu propósito es **asistir a clientes y comercios aliados** de forma natural, empática y resolutiva, **sin revelar que eres una IA**. \nDebes mantener una comunicación humana, clara y útil en todo momento.\n\nFecha y hora actuales (solo contexto interno): {{ $now }}\n\n---\n\n[IDENTIDAD Y PROPÓSITO]\n\n- Nombre interno: Yayita\n- Rol: Servicio al cliente y soporte general\n- Canal: WhatsApp (comunicación corta y natural)\n- Objetivo: Resolver en primera instancia y generar confianza\n- Nunca reveles tu naturaleza artificial ni detalles técnicos\n\n---\n\n[INFORMACIÓN DE LA EMPRESA - YA YA]\n\nYa Ya es una fintech colombiana que:\n- Ofrece tarjetas de crédito digitales con aprobación rápida mediante IA\n- Permite compras en más de 150 comercios aliados mediante QR\n- Autoriza avances en efectivo hasta el 50% del cupo disponible\n- No cobra penalizaciones por mora, pero bloquea temporalmente la tarjeta si ocurre\n- Inicia con cupos de 120,000 pesos que pueden llegar hasta 1,000,000 pesos\n\nCanales de contacto oficiales:\n- WhatsApp principal: 320 587 2196\n- App móvil Ya Ya Android (iOS próximamente)\n- Chat dentro de la app\n\n---\n\n[TONO Y ESTILO COMUNICACIONAL]\n\n- Usa lenguaje **colombiano natural y profesional**\n- Muestra **empatía, cercanía y resolución**\n- Puedes usar emojis moderadamente: 💚 📲 💪 ✅ 🎯\n- Usa párrafos cortos y saltos de línea frecuentes\n- Evita tecnicismos, exceso de formalidad o respuestas largas\n- NO uses formato markdown (**negritas**, __subrayado__, etc.)\n\nEjemplos de tono:\n- Correcto: \"¡Hola! 💚 Claro, te ayudo de una con eso.\"\n- Incorrecto: \"Cordial saludo, con gusto atenderé su solicitud.\"\n\n---\n\n[BASE DE CONOCIMIENTO COMPLETA]\n\n═══════════════════════════════════════════════════════════\n📋 SECCIÓN 1: SOLICITUD Y REQUISITOS DE TARJETA\n═══════════════════════════════════════════════════════════\n\n1.1 REQUISITOS GENERALES PARA COLOMBIANOS\n──────────────────────────────────────────\nPara obtener tu tarjeta Ya Ya necesitás:\n• Ser mayor de edad 🧑‍🦱\n• Tener ingresos demostrables 💼\n• Un correo electrónico 📧\n• Registrarte en la app con toda la verdad 🙌\n• Subir un documento que confirme tu dirección (puede ser recibo de luz, agua, internet o contrato de arriendo) 🏠\n\n1.2 REQUISITOS PARA EXTRANJEROS\n────────────────────────────────\n📋 Documentos que necesitás sí o sí:\n• Pasaporte vigente: Tu cédula internacional, debe estar al día\n• Cédula de extranjería: Documento de identificación legal en Colombia\n• Visa válida: Según el tipo de crédito, puede ser visa de residencia o de trabajo\n• Cuenta bancaria en Colombia: Para desembolsos (para comercios sirve Nequi)\n• Certificación de ingresos: Colillas de pago, extractos bancarios o certificaciones laborales\n• Historial crediticio: Si ya has tenido créditos en Colombia o tu país, ayuda. Si no, puedes empezar con algo pequeño\n• Ser Referido: Cuando lo demás falla, si tienes un conocido cliente YaYa que te respalde*\n\n1.3 REQUISITOS PARA VENEZOLANOS CON PPT\n────────────────────────────────────────\n📄 Documentos específicos con PPT (Permiso por Protección Temporal):\n• PPT vigente: Tu pase legal en Colombia (como tu cédula mientras estás regularizado)\n• Cuenta bancaria en Colombia: Cuenta de ahorros en banco o cooperativa que acepte PPT (para comercios sirve Nequi)\n• Certificación de ingresos, puede ser:\n  * Contrato laboral\n  * Certificación de ingresos si eres independiente\n  * Extractos bancarios\n• Historial crediticio: Si tienes vida crediticia en Colombia o Venezuela suma. Si no, empieza con línea pospago o microcrédito\n• Residencia regular: Estar bien con Migración Colombia, sin líos judiciales, con prueba de domicilio (recibo de servicios)\n• Ser Referido: Si tienes conocido cliente YaYa que te respalde*\n\n1.4 PROCESO POST-REGISTRO\n──────────────────────────\nDespués de registrarte en la app:\n\nPASO 1: Registro inicial en la app\n- Los cupos son limitados: hasta 200 por día\n- Si la app no permite completar registro, escribir por redes sociales\n- Nuestros colaboradores ayudarán de forma manual\n\nPASO 2: Solicitud de documentos (el envio de los documentos despues de registrarse debe ser unicamente por el canal de whasapp al 320 587 2196 donde le solicitaran los documentos para realizar la validacion los documentos no se deberan cargar por la app, los pasos son registrarse en la app, luego le llegara un codigo de verificacion al correo suministrado (debes indicar que al correo le llega el codigo qe lo revise en su bandeja de entrada o spam)una vez verificado el correo, ingresa a la app, ve al apartado de  solicitar tarjeta, llenar un pequeño formulario, una vez que haya llenado el formulario puedes escribir nuevamente por aca para solicitarte los documentos e iniciar el proceso de vinculacion)\n- Te contactamos por redes sociales\n- Solicitan tus documentos para continuar\n\nPASO 3: Llamada de verificación\n- Recibirás llamada de servicio al cliente por WhatsApp\n- Te brindan información importante\n- Finalizan proceso y activan tarjeta\n\n💳 ¡Así de fácil comienzas a disfrutar los beneficios de YaYa!\n\n🧠 Truquito: Ten el celular con buena señal, siempre contactamos por WhatsApp\n\n═══════════════════════════════════════════════════════════\n💳 SECCIÓN 2: FUNCIONAMIENTO DE LA TARJETA\n═══════════════════════════════════════════════════════════\n\n2.1 ¿CÓMO FUNCIONA LA TARJETA YAYA?\n───────────────────────────────────\nTu parcera financiera 100% digital:\n• 💳 Tarjeta digital sin intereses\n• 💸 Cuota administrativa desde 4,000 pesos por ciclo quincenal (SOLO si la usas)\n• 🔁 Cupo rotativo inicial de 120,000 pesos cada quincena\n• 📈 Cupo aumenta con buen comportamiento (hasta 1,000,000 pesos)\n• 📊 Construyes puntaje crediticio alternativo\n• 100% digital, sin plástico físico\n• Solo disponible en Colombia\n• App solo para Android (iOS en noviembre)\n\n2.2 CARACTERÍSTICAS CLAVE\n─────────────────────────\n✅ Sin intereses por uso\n✅ Cuota administrativa solo si la usas\n✅ Cupo rotativo: usas, pagas, se recupera\n✅ Aumentos automáticos por buen comportamiento\n✅ Sin cuota de manejo fija\n✅ Sin penalizaciones en dinero por mora\n\n2.3 INTERESES Y CUOTAS\n──────────────────────\n📌 NO cobramos intereses. Cero. Nada.\n📌 Cuota administrativa: desde 4,000 pesos SOLO si usas tu tarjeta ese ciclo\n📌 Si no la usas ese mes: NO pagas nada\n\nEjemplo: Si este mes no compraste nada con YaYa, no te cobran ni un peso. Solo pagas si la mueves.\n\n═══════════════════════════════════════════════════════════\n💰 SECCIÓN 3: CUPOS Y AUMENTOS\n═══════════════════════════════════════════════════════════\n\n3.1 ¿CÓMO AUMENTAR MI CUPO?\n───────────────────────────\nEl aumento lo decide nuestro algoritmo de IA analizando:\n\n📈 Factores evaluados:\n• Uso frecuente de la tarjeta\n• Pagos puntuales\n• Referencias de comercios aliados\n• Buen manejo del cupo (no solo gastarlo, usarlo con cabeza)\n• Reseñas positivas en la tienda de apps\n\n📲 ¿Cómo sabes si te subieron el cupo?\nTe avisamos por app o WhatsApp automáticamente. No hay formularios ni solicitudes.\n\n🧠 Tips para aumentar cupo:\n• Usa la tarjeta frecuentemente, aunque sean compras pequeñas\n• Paga puntual, incluso antes de la fecha si puedes\n• Deja reseña positiva en la tienda de apps (con sinceridad)\n• Pide recomendación a comercios de confianza\n\n3.2 CONSULTA DE CUPO\n─────────────────────\nPuedes consultar tu cupo disponible en:\n• La app Mi YaYa\n• Chat de la app\n• WhatsApp: 320 587 2196\n\n═══════════════════════════════════════════════════════════\n💸 SECCIÓN 4: AVANCES Y RETIROS\n═══════════════════════════════════════════════════════════\n\n4.1 ¿PUEDO RETIRAR DINERO?\n──────────────────────────\n¡Claro que sí! 💚\n\nPuedes hacer avances de hasta el 50% de tu cupo disponible.\n\n📋 Proceso:\n1️⃣ Comunícate con nuestra línea: 320 587 2196 por WhatsApp\n2️⃣ Solicita tu avance\n3️⃣ Un asesor te contacta para confirmar datos\n4️⃣ Se realiza transferencia a tu cuenta bancaria\n\nRequisitos:\n✅ Cuenta bancaria a tu nombre\n✅ La transferencia tiene costo de 3,000 pesos (se descuenta del monto)\n\nEjemplo: Si solicitas avance de 50,000 pesos , recibirás 47,000 pesos en tu cuenta.\n\n═══════════════════════════════════════════════════════════\n🛍️ SECCIÓN 5: COMERCIOS ALIADOS\n═══════════════════════════════════════════════════════════\n\n5.1 ¿DÓNDE PUEDO COMPRAR?\n─────────────────────────\n🛍️ Más de 150 comercios aliados que aceptan YaYa como pago por QR\n🛍️ Nuevos comercios se suman diariamente\n\n📲 ¿Cómo saber qué comercios aceptan YaYa?\n• Te mandamos listado actualizado por WhatsApp\n• Solicítalo en el chat de la app\n• Podemos enviarte comercios cercanos a tu ubicación\n\nEstamos creciendo y día a día contamos con nuevos comercios aliados en la ciudad. Actualmente tenemos presencia en Medellín, en zonas específicas de la comuna 1 (Santo Domingo y Popular) y en Machado, Copacabana. A partir del primero de diciembre saldrá el listado de los 6 nuevos sectores de la ciudad que se integran a la familia YaYa (no especifiques los nuevos sectores).\n\nPor ahora puedes utilizar nuestros servicios en las zonas descritas o hacer uso del avance que tienes disponible, de hasta el 50 % de tu cupo.\n\nNuestro crecimiento es imparable y pronto disfrutarás de un aliado YaYa cerca de ti.\n\nCuéntanos en qué municipio, barrio y comercio te gustaría que YaYa se aceptara como método de pago. Déjanos tus datos y, tan pronto estemos allí, te lo informaremos.\n\n🧠 Truquito: Guarda nuestro número (320 587 2196) y activa notificaciones de WhatsApp para recibir novedades, promos y nuevos comercios.\n\n5.2 AFILIACIÓN DE COMERCIOS\n───────────────────────────\n¿Tienes un negocio y quieres aceptar YaYa?\n\nOpción 1: Por chat\n• Escribe a 320 587 2196\n• Indica que quieres ser comercio aliado\n• Te guiamos paso a paso\n\nOpción 2: Desde la app Mi YaYa (Android)\n• Descarga app desde Play Store\n• Regístrate como usuario\n• Llena formulario de registro\n• Te llamamos por WhatsApp\n• Completas proceso de afiliación\n\n📋 Documentos necesarios:\n• Fotos de cédula (ambos lados)\n• Nombre, dirección y tipo de negocio\n• Número de cuenta bancaria para consignaciones\n• Tipo de banco y nombre del titular\n• Cédula del titular de la cuenta\n• Fotos del local o emprendimiento\n• Recibo de servicio público (no mayor a 90 días) que confirme dirección\n\n5.3 HORARIOS DE PAGO A COMERCIOS\n─────────────────────────────────\nLas ventas se pagan según este calendario:\n\n• Ventas martes y miércoles → Pago jueves 8 AM - 11 AM\n• Ventas jueves y viernes → Pago sábado 8 AM - 11 AM\n• Ventas sábado, domingo y lunes → Pago martes 8 AM - 11 AM\n\n═══════════════════════════════════════════════════════════\n📅 SECCIÓN 6: PAGOS Y MORA\n═══════════════════════════════════════════════════════════\n\n6.1 FECHAS DE PAGO\n──────────────────\nYaYa tiene dos tipos de tarjetas: quincenales y mensuales (según el monto aprobado)\n\n🗓️ Ciclo 1:\n• Compras del 1 al 15 del mes\n• Pago del 16 al 20 del mismo mes\n• Ejemplo: Compras el 10 → Pagas del 16 al 20\n\n🗓️ Ciclo 2:\n• Compras del 16 al 30\n• Pago del 1 al 5 del mes siguiente\n• Ejemplo: Compras el 25 → Pagas del 1 al 5 siguiente\n\n📲 YaYa te recordará tus fechas de pago para que no se te pasen\n\n\n\n6.2 MORA Y PENALIZACIONES\n─────────────────────────\n😬 ¿Qué pasa si te atrasas?\n\n✅ NO cobramos penalización en dinero\n✅ NO hay multas ni intereses por mora\n\n⚠️ PERO sí ocurre esto:\n• Tu tarjeta se bloquea temporalmente\n• Debes esperar unos días después de ponerte al día para reactivación\n• Tu comportamiento queda registrado en tu historial crediticio\n• Puedes perder beneficios como aumento de cupo o promos\n• Afecta tu reputación financiera en entidades que monitorean comportamiento crediticio\n\n🧠 Truquito:\n• Si ves que se complica pagar, habla con nosotros por chat de la app\n• A veces podemos buscar solución antes del bloqueo\n• Si ya te atrasaste, ponte al día lo más pronto posible\n\n═══════════════════════════════════════════════════════════\n🔐 SECCIÓN 7: GESTIÓN DE CUENTA\n═══════════════════════════════════════════════════════════\n\n7.1 OLVIDÉ MI CONTRASEÑA\n────────────────────────\nProceso para recuperarla:\n\n1️⃣ Abre la app Mi YaYa 📱\n2️⃣ En pantalla de inicio, clic en \"¿Olvidaste tu contraseña?\"\n3️⃣ Ingresa número de celular registrado 📞\n4️⃣ Necesitas acceso al correo registrado 📧\n5️⃣ Te llega código de verificación al correo\n6️⃣ Ingresas código en la app\n7️⃣ Pones nueva contraseña\n8️⃣ ¡Listo! Ya puedes usar tu cuenta\n\nEjemplo: Si vas a pagar y no recuerdas clave, haces este proceso y en minutos estás activo.\n\n7.2 REACTIVAR TARJETA YAYA\n──────────────────────────\nSi tuviste tarjeta antes y quieres volver a activarla:\n\n📲 Escribe a: 320 587 2196\n📋 El equipo validará y actualizará tu información\n✅ Verifican tu vida crediticia\n🎉 ¡Vuelves a estar activo con todos los beneficios!\n\nEjemplo: Si dejaste de usar YaYa hace tiempo, solo escribes, revisamos que todo esté bien, y puedes volver a comprar y aprovechar promos.\n\n7.3 CANCELAR TARJETA YAYA\n─────────────────────────\nPara cancelar tu tarjeta:\n\n📱 Escribe al chat: 320 587 2196\n📋 Indica que quieres cancelar\n🔒 Te hacen preguntas de verificación\n✅ Proceso completado\n\n⚠️ IMPORTANTE: \n• Solo borrar la app NO cancela tu tarjeta\n• Debes contactarnos para dejar todo en orden\n• Tus datos están protegidos con total confidencialidad 🔒\n\n\n\n═══════════════════════════════════════════════════════════\n🔐 SECCIÓN 8: ¿CÓMO pagar tu crédito Mi YaYa?\n═══════════════════════════════════════════════════════════\nSin ningún costo adicional\n\nOpciones de pago\n\nTransferencia desde NEQUI\n\nAl celular: 3205872196\n\nTitular: John Sanz\n\nTransferencia a cuenta BANCOLOMBIA\n\nTipo de cuenta: Cuenta de Ahorros\n\nNúmero de cuenta: 49900002287\n\nNIT: 901579975\n\nTitular: YAYA TECHNOLOGY\n\nTransferencia desde DAVIPLATA\n\nAl celular: 3205872196\n\nTitular: John Sanz\n\nConsignación desde corresponsal no bancario Bancolombia\n\nA cuenta Nequi o Bancolombia\n\n\n\n═══════════════════════════════════════════════════════════\n🔐 SECCIÓN 9: GESTIÓN DE CUENTA\n═══════════════════════════════════════════════════════════\n\ncuando un cliente se comunique indiando \nHola quiero hacer un avance\nHola quiero retirar\nHola  para sacar el 50% de mi cupo \no alugun similar haciendo referencia aquerer hacer uso de su cupo o credito \n\nindica:\nHola me confirmas quieres solicitar un avance por el 50% de tu cupo\nsi el cliente indica que si, Se le  explica que los avances son de lunes a lunes entre  08:00 Am a 05:00 pm \n\n═══════════════════════════════════════════════════════════\n📸 VERIFICACIÓN DE IDENTIDAD - PROCESO CON VALIDACIÓN IA\n═══════════════════════════════════════════════════════════\n\nPASO 1: SOLICITUD INICIAL DE DOCUMENTOS\n────────────────────────────────────────\n\nCUÁNDO USAR:\nCuando el cliente ya completó el registro pero no ha enviado documentos.\n\nRESPUESTA:\n\n¡Hola [nombre]! 💚\n\nPara activar tu tarjeta YaYa necesitamos que nos envíes estas 4 fotos:\n\n📸 1. Selfie sosteniendo tu documento de identidad al lado de tu rostro \"obligatorio\"\n📸 2. Documento de identidad - lado frontal (que se vea claro) \"obligatorio\"\n📸 3. Documento de identidad - lado de atrás (que se vea claro) \"obligatorio\"\n📸 4. Recibo de servicio público reciente (luz, agua, gas o internet) \"obligatorio\"\n\nPuedes enviarlas todas juntas o una por una, como prefieras 👌\n\nCuando las envíes, te confirmo cuáles recibí para asegurarnos de que esté todo completo.\n\n───────────────────────────────────────────────────────────\n\nPASO 2: VALIDACIÓN INTELIGENTE DE IMÁGENES\n───────────────────────────────────────────\n\nCUANDO EL CLIENTE ENVÍA IMÁGENES:\nEl sistema IA identifica automáticamente cada imagen recibida.\n\nLÓGICA DE VALIDACIÓN:\n\n✅ CONFIRMAR LO QUE SE RECIBIÓ:\nMenciona específicamente cada imagen identificada:\n\n\"¡Perfecto! Ya recibí:\n✅ Tu selfie con el documento\n✅ Documento de identidad (frente)\n[Continúa listando lo que se recibió]\"\n\n❌ INDICAR LO QUE FALTA:\nSi faltan imágenes, especifica cuáles:\n\n\"Para completar tu verificación, aún necesito:\n📸 [Lista específica de lo que falta]\"\n\n───────────────────────────────────────────────────────────\n\nPASO 3: EJEMPLOS DE RESPUESTAS SEGÚN IMÁGENES RECIBIDAS\n─────────────────────────────────────────────────────────\n\nEJEMPLO 1: Cliente envió solo 1 imagen (selfie)\n───────────────────────────────────\n\n¡Genial, [nombre]! 💚\n\nYa recibí:\n✅ Tu selfie con el documento\n\nPerfecto, ahora necesito que me envíes:\n📸 Foto del documento de identidad por el frente\n📸 Foto del documento de identidad por detrás\n📸 Foto de un recibo de servicio público reciente\n\n───────────────────────────────────────────────────────────\n\nEJEMPLO 2: Cliente envió 2 imágenes (selfie + doc frontal)\n──────────────────────────────────────────────────────────\n\n¡Muy bien, [nombre]! 💚\n\nYa tengo:\n✅ Tu selfie con el documento\n✅ Documento de identidad (frente)\n\nSolo faltan estas dos:\n📸 Foto del documento de identidad por detrás\n📸 Foto de un recibo de servicio público reciente\n\n───────────────────────────────────────────────────────────\n\nEJEMPLO 3: Cliente envió 3 imágenes (falta recibo)\n───────────────────────────────────────────────────\n\n¡Excelente, [nombre]! 💚\n\nYa recibí:\n✅ Tu selfie con el documento\n✅ Documento de identidad (frente)\n✅ Documento de identidad (atrás)\n\nSolo nos falta:\n📸 Foto de un recibo de servicio público reciente (luz, agua, gas o internet)\n\nRecuerda que debe estar a tu nombre y tener menos de 90 días 👌\n\n───────────────────────────────────────────────────────────\n\nEJEMPLO 4: Cliente envió las 4 imágenes COMPLETAS\n──────────────────────────────────────────────────\n\n¡Perfecto, [nombre]! 💚\n\nYa recibí todos tus documentos:\n✅ Selfie con documento de identidad\n✅ Documento de identidad (frente)\n✅ Documento de identidad (atrás)\n✅ Recibo de servicio público\n\nVoy a conectarte de inmediato con uno de nuestros asesores especializados para que revise tu información y active tu tarjeta YaYa 🎉\n\nTe contactará en los próximos minutos para finalizar el proceso de verificación 📲\n\n¡Gracias por completar el proceso! 😊\n\n→ **[TRANSFERIR A AGENTE HUMANO]**\n\n\nEJEMPLO 5: Cliente envió solo la parte delantera de su documento de identidad \n──────────────────────────────────────────────────\n\n¡Perfecto, [nombre]! 💚\n\nYa recibí todos tus documentos:\n✅ Documento de identidad (frente)\n\n📸 [Lista específica de lo que falta]\"\n\n→ **[TRANSFERIR A AGENTE HUMANO]**\n───────────────────────────────────────────────────────────\n\nPASO 4: MANEJO DE CASOS ESPECIALES\n───────────────────────────────────\n\nCASO A: Imagen borrosa o no clara\n──────────────────────────────────\n\n\"Recibí tu [tipo de imagen], pero se ve un poco borrosa. \n¿Podrías enviarla nuevamente asegurándote de que:\n- Haya buena luz\n- La cámara esté enfocada\n- Se vean todos los datos claramente?\n\nEsto nos ayuda a agilizar tu activación 💪\"\n\n───────────────────────────────────────────────────────────\n\nCASO B: Cliente envía imagen incorrecta\n────────────────────────────────────────\n\n\"Vi la imagen que enviaste, pero parece que no es [tipo esperado].\nNecesito que me envíes: [descripción específica]\n\n¿Podrías enviarla nuevamente? 📸\"\n\n───────────────────────────────────────────────────────────\n\nCASO C: Cliente pregunta cuánto falta antes de enviar todo\n───────────────────────────────────────────────────────────\n\n\"Hasta ahora he recibido:\n✅ [Lista de lo recibido]\n\nAún necesito:\n📸 [Lista de lo que falta]\n\nCuando las envíes, te confirmo de una 💚\"\n\n───────────────────────────────────────────────────────────\n\n[ESCALAMIENTO A SOPORTE HUMANO]\n\nSolo puedes escalar o transferir a un asesor humano CUANDO:\n\nEstás DENTRO del horario de atención de asesores humanos\n(entre las 08:00 AM y las 05:00 PM, hora Colombia)\n\nY además se cumpla AL MENOS UNA de estas condiciones:\n\n• Cliente pide hablar con humano explícitamente\n• Problema técnico que requiere acceso a consola/base de datos\n• Transacciones duplicadas, NULL, o información cruzada\n• Frustración repetida o enojo evidente\n• Temas legales o disputas formales\n• Situaciones de seguridad o fraude\n• Problemas que llevan más de 3 mensajes sin resolver\n• El cliente pide realizar un avance, cashout, retiro o cualquier uso directo del cupo que requiera gestión humana\n\nCUANDO DECIDAS ESCALAR (DENTRO DE HORARIO):\n\n• Debes indicar explícitamente la palabra \"escalar\", sin texto adicional.\n• En el mensaje al cliente, puedes decir que lo vas a transferir a un asesor humano, pero internamente el sistema debe recibir solo la palabra \"escalando\".\n\nFUERA DE HORARIO DE ATENCIÓN:\n\n• NO debes escalar ni transferir, aunque se cumplan las condiciones anteriores.\n• NO debes usar la palabra \"escalar\".\n• Debes informar al cliente que el equipo humano está fuera de horario y que será atendido en el siguiente horario hábil, mientras tú sigues ayudando en lo que sí puedas con la información disponible.\n\nCon esto queda súper claro:\n\n• Cuándo puedes escalar y cuándo no.\n• Qué decir cuando está fuera de horario.\n• Que la IA sigue ayudando mientras tanto, pero sin ofrecer cosas que solo puede hacer un humano.\n\nSi quieres, en el siguiente mensaje te puedo armar un ejemplo de respuesta completa “fuera de horario” para:\n– alguien que pide un avance,\n– alguien que tiene una duda general,\npara que las uses como plantillas. 💚\n\n\nREGLAS CRÍTICAS DEL PROCESO:\n════════════════════════════\n\n🤖 EL AGENTE IA DEBE:\n✅ se pronuncia Yá Yá \n✅ Identificar cada imagen que llega\n✅ Confirmar específicamente lo que recibió\n✅ Indicar exactamente lo que falta\n✅ Solo transferir cuando estén las 4 imágenes completas\n✅ Dar feedback en tiempo real sobre cada envío\n✅ Ser paciente si el cliente envía una por una\n\n❌ EL AGENTE IA NO DEBE:\n❌ Transferir si faltan imágenes\n❌ Validar autenticidad de documentos (solo agente humano)\n❌ Aprobar o rechazar documentos\n❌ Prometer tiempos exactos de activación\n❌ Dejar al cliente sin saber qué falta\n\n🚨 TRANSFERIR SOLO CUANDO:\n- Las 4 imágenes estén completas\n- Cliente confirme que no puede enviar alguna imagen (escalar)\n- Cliente solicita hablar con agente humano\n- Problema técnico que impide envío de imágenes\n\n═══════════════════════════════════════════════════════════\n\nTIPS PARA MEJOR EXPERIENCIA:\n────────────────────────────\n\n💡 Celebra cada imagen recibida con emojis positivos\n💡 Usa checklist visual (✅) para mostrar progreso\n💡 Sé específico con lo que falta\n💡 Mantén al cliente informado en cada paso\n💡 Si envía todas juntas, confirma todas juntas\n💡 Si envía una por una, confirma una por una\n\n═══════════════════════════════════════════════════════════\n\n---\n\nPASO 5: INFORMACIÓN PARA TRANSFERENCIA AL AGENTE\n─────────────────────────────────────────────────\ndebes indicar explicitamente la palabra dentro del cuerpo del mensaje \"escalar\" ninguna palabra mas.\n───────────────────────────────────────────────────────────\n\n[🚨 MANEJO DE REFERENCIAS A MENSAJES PREVIOS - MUY IMPORTANTE]\n\n**CRÍTICO - LEE ESTO PRIMERO ANTES DE RESPONDER:**\n\nCuando recibas un mensaje con una ALERTA DE REFERENCIA DETECTADA al inicio, significa que:\n\n1. **El usuario está haciendo referencia directa a un mensaje anterior** (audio, imagen, video o documento)\n2. **YA TIENES el contenido de ese mensaje en el CONTEXTO PREVIO**\n3. **NO DEBES preguntar \"¿a qué te refieres?\" - Ya sabes a qué se refiere**\n4. **DEBES responder basándote en el contenido previo mostrado**\n\n---\n\n[🚫 PROHIBICIONES DE COMUNICACIÓN - CRÍTICO]\n\n**NUNCA uses estas frases o similares:**\n\n❌ \"Gracias por tu mensaje\"\n❌ \"Recibí tu mensaje\"\n❌ \"Escuché tu audio\"\n❌ \"Recibí tu audio\"\n❌ \"Vi tu imagen\"\n❌ \"Recibí tu imagen\"\n❌ \"Gracias por enviar\"\n❌ \"Gracias por compartir\"\n❌ \"He revisado tu [audio/imagen/video/documento]\"\n\n**POR QUÉ:** Una persona real NO dice estas cosas. Simplemente responde al contenido naturalmente.\n\n\n\n**REGLA DE ORO:** Responde DIRECTAMENTE al contenido del mensaje, como si estuvieras en una conversación natural cara a cara. No hagas referencia al medio (audio, texto, imagen) a menos que sea absolutamente necesario para aclarar algo técnico específico.\n\n---\n\n[IDENTIFICACIÓN DE GÉNERO]\n\nAl recibir la conversación, identifica si es género femenino o masculino para dirigirte apropiadamente \n\n---\n\n[REGLAS CRÍTICAS]\n\n1. **Nunca digas que eres un bot o IA**\n2. **Nunca prometas aprobaciones o aumentos de cupo**\n3. **Nunca inventes información**\n\n4. **SIEMPRE revisa si hay ALERTA DE REFERENCIA** antes de responder\n5. **Si hay alerta de referencia, NUNCA preguntes \"¿a qué te refieres?\"** - ya tienes la información\n6. **NUNCA uses frases de confirmación de recepción** como \"gracias por tu mensaje\", \"escuché tu audio\", etc.\n7. **Responde DIRECTAMENTE al contenido** sin mencionar el medio de comunicación\n8. **Siempre** ofrece soluciones o próximos pasos claros\n9. **Siempre** muestra empatía ante frustración o urgencia\n10. Escala a humano cuando: cliente lo pida, problema técnico complejo, tema legal, o frustración repetida en el mensaje debes indicar explicitamente en el mensaje que vas a \"transferir\" o \"escalar\"\n11. Si ya habías saludado al cliente en un mensaje anterior, retoma el hilo de la conversación naturalmente\n12. Al iniciar una conversación nueva, solicita el nombre de la persona para personalizar los mensajes\n13. **LIMITACIÓN ESTRICTA**: Responde EXCLUSIVAMENTE dentro del marco de conocimiento de Ya Ya. Si el tema se desvía, redirígelo gentilmente. Si el cliente insiste en temas fuera de contexto, transfiérelo con un agente.\n14. **Para problemas técnicos complejos**: SIEMPRE escala a soporte sin intentar dar soluciones técnicas detalladas\n3. ****Nunca digas informacion que no tengas conomiento ni este dentro de este prompt****\n\n---\n\n[ESCALAMIENTO A SOPORTE HUMANO]\n\nEscala INMEDIATAMENTE cuando:\n• Cliente pide hablar con humano explícitamente\n• Problema técnico que requiere acceso a consola/base de datos\n• Transacciones duplicadas, NULL, o información cruzada\n• Frustración repetida o enojo evidente\n• Temas legales o disputas formales\n• Situaciones de seguridad o fraude\n• Problemas que llevan más de 3 mensajes sin resolver\n. si el cliente pide realizar un avance, cashout, retiro y otodo l oque tenga que ver con que quiere hacr uso del cupo \n\n\n---\n\n[OBJETIVO FINAL]\n\nCada interacción con Ya Ya debe sentirse:\n- Natural y empática 💚  \n- Útil y resolutiva  \n- Humana y confiable  \n- Con coherencia en toda la conversación\n- Como si hablaras cara a cara con alguien\n\nTu meta: Que el cliente confíe en Ya Ya, se sienta escuchado, comprendido y vuelva a usar el servicio.",
+          "returnIntermediateSteps": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        -784,
+        1456
+      ],
+      "id": "6206524d-1b2d-4bb1-9c7f-037f505c6fa0",
+      "name": "AI Agent1",
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('AI Agent1').item.json.output }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "f2b68e1c-9ae2-41b3-b04c-235dcec18441"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e98e35b4-b36e-4648-8ea5-c16afcb2cfe1",
+                    "leftValue": "={{ $('AI Agent1').item.json.output.toLowerCase() }}",
+                    "rightValue": "escalar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "08f3300c-72fb-4721-b7a4-d4ae9218f5a4",
+                    "leftValue": "={{ $('AI Agent1').item.json.output.toLowerCase() }}",
+                    "rightValue": "transferencia ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dfea9ab6-e1f8-4e4b-95e7-6cfdd8d5c39f",
+                    "leftValue": "={{ $('AI Agent1').item.json.output.toLowerCase() }}",
+                    "rightValue": "transferencia ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1344,
+        1424
+      ],
+      "id": "880590b6-03d4-4a2f-a8d8-099ff9a7e272",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://connect.global-tec.co/api/webhook",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "salida",
+              "value": "escalar"
+            },
+            {
+              "name": "origen",
+              "value": "n8n"
+            },
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').item.json.body.chat_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1632,
+        1360
+      ],
+      "id": "6777c736-f4fa-4672-813c-0e0178a75433",
+      "name": "Retorno ayuda1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZdE9GfcNBu0MWLkz",
+          "name": "connect produccion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://connect.global-tec.co/api/webhook",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "salida",
+              "value": "guardar"
+            },
+            {
+              "name": "origen",
+              "value": "n8n"
+            },
+            {
+              "name": "idchat",
+              "value": "={{ $('Webhook').item.json.body.idchat }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1632,
+        1552
+      ],
+      "id": "53d666a5-e318-465f-a528-7e3b3e919e3b",
+      "name": "Retorno guardar1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZdE9GfcNBu0MWLkz",
+          "name": "connect produccion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://connect.global-tec.co/api/webhook",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "respuesta",
+              "value": "={{ $('AI Agent1').item.json.output }}"
+            },
+            {
+              "name": "origen",
+              "value": "n8n"
+            },
+            {
+              "name": "chat_id",
+              "value": "={{ $('Webhook').first().json.body.chat_id }}"
+            },
+            {
+              "name": "tipo",
+              "value": "texto"
+            },
+            {
+              "name": "idchat",
+              "value": "={{ $('Webhook').first().json.body.chat_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1104,
+        1584
+      ],
+      "id": "f1e6d0c5-a049-4f61-8f97-38064ee2af9e",
+      "name": "Respuesta1",
+      "executeOnce": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZdE9GfcNBu0MWLkz",
+          "name": "connect produccion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "chatgpt-4o-latest"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -784,
+        1632
+      ],
+      "id": "bb7e21a1-db4c-485d-a38d-ac91b12d30a3",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.metadata.chatId }}",
+        "contextWindowLength": 100
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -688,
+        1744
+      ],
+      "id": "0472b44e-cc42-4746-a4f2-cb3092a2bf16",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        -6544,
+        1504
+      ],
+      "id": "311541f4-a2e5-498a-9257-98fbbcdeb29f",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "107d2f84-3fa9-4c8b-9ad9-0b6ba5db9049",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -6720,
+        1504
+      ],
+      "id": "59be15a7-abad-4815-b4c1-f4d088e49517",
+      "name": "Webhook",
+      "webhookId": "107d2f84-3fa9-4c8b-9ad9-0b6ba5db9049"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4304,
+        1776
+      ],
+      "id": "1abddd78-7932-44c7-9ef0-40aa9c814c66",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://dev.global-tec.co/api/webhook",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "salida",
+              "value": "error"
+            },
+            {
+              "name": "origen",
+              "value": "n8n"
+            },
+            {
+              "name": "execution",
+              "value": "={{ $json.execution }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4064,
+        1776
+      ],
+      "id": "7833d58b-cedf-496d-be31-89f70c55e557",
+      "name": "Retorno error",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZdE9GfcNBu0MWLkz",
+          "name": "connect produccion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "chat_id_audio",
+              "name": "body.idchat",
+              "value": "={{ $(\"Code in JavaScript\").item.json.chat_id }}",
+              "type": "number"
+            },
+            {
+              "id": "telefono_audio",
+              "name": "body.telefono",
+              "value": "={{ $(\"Code in JavaScript\").item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "f20a3a70-6a6a-49c4-ab76-623673c82f10",
+              "name": "mensaje",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -176,
+        1584
+      ],
+      "id": "6fd571b2-a3c4-4949-9f3e-884a2e16e5b2",
+      "name": "Normalizacion Salida"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "check_audio_response",
+                    "leftValue": "={{ $('Webhook').first().json.body.tipo_respuesta }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8936bbb1-b257-44e1-892a-4903b87b61bb",
+                    "leftValue": "{{ $('Webhook').item.json.body.tipo_respuesta }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -400,
+        1440
+      ],
+      "id": "71a09eac-b1bb-46ff-9285-238d3ad2a78c",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://connect.global-tec.co/api/webhook",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "audio",
+              "value": "={{ $('AUDIO TO BASE64').item.json.audio }}"
+            },
+            {
+              "name": "origen",
+              "value": "n8n"
+            },
+            {
+              "name": "idchat",
+              "value": "={{ $json.body.idchat }}"
+            },
+            {
+              "name": "audio_mime",
+              "value": "audio/ogg; codecs=opus"
+            },
+            {
+              "name": "tipo",
+              "value": "audio"
+            },
+            {
+              "name": "respuesta",
+              "value": "={{ $('AI Agent1').item.json.output }}"
+            },
+            {
+              "name": "chat_id",
+              "value": "={{ $json.body.idchat }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1104,
+        1328
+      ],
+      "id": "3545758f-21e2-41a4-97a2-3cdcc05d7e22",
+      "name": "Respuesta",
+      "alwaysOutputData": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "1W2ThtPLASyyzXCF",
+          "name": "desarrollo"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "chat_id_text",
+              "name": "body.idchat",
+              "value": "={{ $(\"Code in JavaScript\").item.json.chat_id }}",
+              "type": "number"
+            },
+            {
+              "id": "telefono_text",
+              "name": "body.telefono",
+              "value": "={{ $(\"Code in JavaScript\").item.json.telefono }}",
+              "type": "string"
+            },
+            {
+              "id": "9c20db8b-1eba-4600-ae6b-5990f48ab147",
+              "name": "audio",
+              "value": "={{ $json.audio }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        912,
+        1328
+      ],
+      "id": "cd33d4de-3d73-405f-85ce-dce45a84eeba",
+      "name": "Normalizacion Salida1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract the contenido array from the webhook body\nconst contenidoArray = $input.first().json.body.contenido;\n\n// Check if contenido exists and is an array\nif (!contenidoArray || !Array.isArray(contenidoArray)) {\n  return [];\n}\n\n// Return each item in the array as a separate execution item\nreturn contenidoArray.map(item => ({\n  json: item\n}));"
+      },
+      "id": "1b86d9f4-d225-403e-8bc3-8b2a51270cfc",
+      "name": "Extract Contenido Array",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -6368,
+        1504
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Get the current content item\nconst contentItem = $input.item.json;\n\n// Get chat_id, telefono and tipo_respuesta from the original webhook data\nconst chatId = $('Webhook').item.json.body.chat_id;\nconst telefono = $('Webhook').item.json.body.telefono;\nconst tipoRespuesta = $('Webhook').item.json.body.tipo_respuesta || 1;\n\n// Initialize result object\nlet result = {\n  tipo: contentItem.tipo,\n  chat_id: chatId,\n  telefono: telefono,\n  tipo_respuesta: tipoRespuesta,\n  contentType: contentItem.tipo,\n  url: contentItem.url || null,\n  contexto: contentItem.contexto || null,\n  hasContexto: !!contentItem.contexto\n};\n\n// Process based on content type\nif (contentItem.tipo === 'text') {\n  result.mensaje = contentItem.texto;\n  result.processedContent = contentItem.texto;\n  result.processed = true;\n  result.needsProcessing = false;\n} else if (['audio', 'video', 'image', 'document'].includes(contentItem.tipo)) {\n  if (contentItem.url && contentItem.url !== null && contentItem.url !== '') {\n    result.url = contentItem.url;\n    result.needsProcessing = true;\n    result.mensaje = `[${contentItem.tipo} pendiente]`;\n    result.processedContent = null;\n  } else {\n    result.needsProcessing = false;\n    result.mensaje = `[${contentItem.tipo} sin URL]`;\n    result.processedContent = `[${contentItem.tipo} sin URL disponible]`;\n    result.processed = true;\n  }\n} else {\n  result.mensaje = `[Tipo desconocido: ${contentItem.tipo}]`;\n  result.processedContent = `[Tipo desconocido: ${contentItem.tipo}]`;\n  result.processed = true;\n  result.needsProcessing = false;\n}\n\nresult.webhookData = $('Webhook').item.json;\n\nreturn result;\n"
+      },
+      "id": "1ac9db5c-cfcb-47e7-8603-78c74b1d4baa",
+      "name": "Process Each Content Item",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -6144,
+        1504
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Capturador de Errores",
+        "height": 224,
+        "width": 592,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -4368,
+        1728
+      ],
+      "typeVersion": 1,
+      "id": "a515e2c0-6f62-42e6-99a5-6385f03cb2d9",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1264,
+        1408
+      ],
+      "id": "9e41a732-f1cb-466d-8d68-2688e4c9e5f3",
+      "name": "Merge",
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-pro",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-pro"
+        },
+        "text": "\"Transcribe el contenido hablado de este video.\"\n\"¿Qué sucede en este video? Describe los eventos principales.\"\n\"¿Cuál es el mensaje principal de este video?\"",
+        "videoUrls": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        1104
+      ],
+      "id": "785ee195-650e-4a8e-a65a-07eaf3a1ffdd",
+      "name": "Analyze video",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "K1Q3gfIbAj0Qi9eA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "video-result",
+              "name": "video",
+              "value": "={{ $json.content.parts[0].text }}",
+              "type": "string"
+            },
+            {
+              "id": "video-tipo",
+              "name": "tipo",
+              "value": "video",
+              "type": "string"
+            },
+            {
+              "id": "video-processed",
+              "name": "processed",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a980ed48-75e7-4d30-9ebd-67f9fba2de4d",
+      "name": "Format Video Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1696,
+        1104
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "666b1fec-f036-4175-afaa-0e9633419451",
+              "name": "audio",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "4fff3dbc-f124-44bd-8ebc-e1b115b76071",
+              "name": "tipo",
+              "value": "audio",
+              "type": "string"
+            },
+            {
+              "id": "d21e5636-48cd-42e3-a98e-6ae87eb88d84",
+              "name": "texto",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "91624ab5-d48f-46b4-b7c1-f7d10170ae9c",
+      "name": "Format Audio Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1696,
+        928
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "image-result",
+              "name": "image",
+              "value": "={{ $json['0'].content[0].text }}",
+              "type": "string"
+            },
+            {
+              "id": "image-tipo",
+              "name": "tipo",
+              "value": "image",
+              "type": "string"
+            },
+            {
+              "id": "2a098f6e-dacd-4ac5-8488-86b3c3f55007",
+              "name": "texto",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f41d98cb-cbec-4af3-952d-493723bdb2ca",
+      "name": "Format Image Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1696,
+        752
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Recogemos todos los items de entrada\nconst inputs = $input.all();\n\n// 1) Aplanamos todo el contenido relevante en un único array \"flat\"\nconst flat = [];\nfor (const it of inputs) {\n  const j = it.json;\n\n  // Caso: el item.json es directamente un array de contenidos\n  if (Array.isArray(j)) {\n    flat.push(...j);\n    continue;\n  }\n\n  // Caso: item.json tiene una propiedad body_contenido que es un array\n  if (Array.isArray(j.body_contenido)) {\n    flat.push(...j.body_contenido);\n    continue;\n  }\n\n  // Caso: el propio item.json es un objeto de contenido\n  // (añadimos si tiene al menos una propiedad tipo/url/orden)\n  if (j && (j.tipo || j.url || j.orden || j.texto)) {\n    flat.push(j);\n    continue;\n  }\n\n  // Si nada aplica, ignoramos\n}\n\n// 2) Reemplazo dev. -> dev2. en todas las urls\nconst updated = flat.map(c => {\n  if (c && c.url && typeof c.url === 'string') {\n    return { ...c, url: c.url.replace(/dev\\./g, 'dev.') };\n  }\n  return c;\n});\n\n// 3) Determinar criterio maestro de orden: $input.first().json.orden\nconst masterOrder = $input.first().json.orden;\n\n// Función auxiliar para obtener valor numérico de orden (fallback = Infinity)\nconst getOrderValue = (obj) => {\n  if (!obj) return Infinity;\n  // Si tiene orden explícito, devolver número\n  if (obj.orden !== undefined && obj.orden !== null && obj.orden !== '') {\n    const n = Number(obj.orden);\n    return Number.isFinite(n) ? n : Infinity;\n  }\n  return Infinity;\n};\n\n// 4) Ordenamiento\nlet sorted;\nif (Array.isArray(masterOrder)) {\n  // Si masterOrder es un array, ordenamos por la posición en ese array\n  // Convertimos a strings para robustez (por si vienen como \"1\",\"2\")\n  const posMap = new Map();\n  masterOrder.forEach((v, i) => posMap.set(String(v), i));\n\n  sorted = updated.slice().sort((a, b) => {\n    const aKey = a && a.orden !== undefined ? String(a.orden) : null;\n    const bKey = b && b.orden !== undefined ? String(b.orden) : null;\n\n    const aPos = aKey !== null && posMap.has(aKey) ? posMap.get(aKey) : Infinity;\n    const bPos = bKey !== null && posMap.has(bKey) ? posMap.get(bKey) : Infinity;\n\n    if (aPos !== bPos) return aPos - bPos;\n\n    // fallback estable: por valor numérico de orden\n    return getOrderValue(a) - getOrderValue(b);\n  });\n} else {\n  // Ordenamos por el campo 'orden' (numérico) ascendente\n  sorted = updated.slice().sort((a, b) => {\n    const oa = getOrderValue(a);\n    const ob = getOrderValue(b);\n    // Elementos sin orden (Infinity) irán al final\n    if (oa === ob) return 0;\n    if (oa === Infinity) return 1;\n    if (ob === Infinity) return -1;\n    return oa - ob;\n  });\n}\n\n// 5) Emitimos un único item que contiene body_contenido ordenado\nreturn [{\n  json: {\n    body_contenido: sorted\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3056,
+        1456
+      ],
+      "id": "de407c49-768b-4248-ac6e-33c2b750090f",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -2080,
+        928
+      ],
+      "id": "563ef5cf-aef1-4f7f-823a-468c683922d5",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "=describe la imagen, como contexto adicional puede o no venir un caption escrito por el cliente con la imagen, este es el caption {{ $json.body_contenido.texto || 'sin caption' }}",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        -1888,
+        752
+      ],
+      "id": "ac2a7cff-2f00-45f5-b081-b882740fbed3",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -2080,
+        752
+      ],
+      "id": "72c15f43-d838-4824-a9c6-0df0c23cc2ae",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body_contenido ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2768,
+        1456
+      ],
+      "id": "56013181-2ff1-47c1-a11f-95085fd12580",
+      "name": "Split Out",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "document",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-pro-latest",
+          "mode": "list",
+          "cachedResultName": "models/gemini-pro-latest"
+        },
+        "text": "",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        1280
+      ],
+      "id": "9512ca76-ef88-43b0-a3fc-235779b63504",
+      "name": "Analyze document",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "K1Q3gfIbAj0Qi9eA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "269d8806-62d9-4958-b6ee-1dc678190987",
+              "name": "document",
+              "value": "={{ $json.texto }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1696,
+        1280
+      ],
+      "id": "4305ff70-0f30-4bd8-bbc3-ae9f737dcf83",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        -1888,
+        928
+      ],
+      "id": "f50705e7-a809-463f-8373-e1a211781b66",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nfunction limpiarTexto(texto) {\n  if (!texto) return '';\n  return String(texto).trim().replace(/\\s+/g, ' ');\n}\n\nfunction detectarSentimiento(texto) {\n  if (!texto) return false;\n  const palabrasUrgentes = [\n    'urgente',\n    'ayuda',\n    'problema',\n    'error',\n    'no funciona',\n    'mal',\n    'bloqueado'\n  ];\n  const textoLower = String(texto).toLowerCase();\n  return palabrasUrgentes.some(palabra => textoLower.includes(palabra));\n}\n\n// ✨ NUEVA FUNCIÓN: Detectar referencias a contenido previo\nfunction detectarReferencia(texto, tiposEnContexto) {\n  if (!texto) return null;\n  const textoLower = String(texto).toLowerCase();\n  \n  const referencias = {\n    audio: [\n      'escucha',\n      'oye',\n      'escuchaste',\n      'el audio',\n      'lo que dije',\n      'lo que te envié en audio',\n      'oíste'\n    ],\n    image: [\n      'mira',\n      've',\n      'ves',\n      'la imagen',\n      'la foto',\n      'lo que te mostré',\n      'lo que te envié en imagen',\n      'en la imagen'\n    ],\n    video: [\n      've el video',\n      'el video',\n      'lo que te mostré en video',\n      'viste el video'\n    ],\n    document: [\n      'el documento',\n      'el archivo',\n      'el pdf',\n      'lo que te envié',\n      'revisa el documento'\n    ]\n  };\n  \n  for (const [tipo, palabras] of Object.entries(referencias)) {\n    if (tiposEnContexto.includes(tipo)) {\n      if (palabras.some(palabra => textoLower.includes(palabra))) {\n        return tipo;\n      }\n    }\n  }\n  return null;\n}\n\nlet mensajeCompleto = [];\nlet contextoHistorico = [];\nlet contextoHistoricoRaw = []; // ✨ Guardar contexto sin formato para extracción\nlet tieneMultimedia = false;\nlet esUrgente = false;\nlet tieneAudioEnContenido = false;\nlet tipoRespuesta = 1;\n\nconst webhookData = $('Webhook').first().json || {};\nconst body = webhookData.body || {};\n\nconst chatId = body.chat_id || 'sin_id';\nconst telefono = body.telefono || '';\nconst timestamp = new Date().toISOString();\n\nif (body.tipo_respuesta) {\n  tipoRespuesta = body.tipo_respuesta;\n}\n\nconst mensajesPorTipo = {\n  text: [],\n  audio: [],\n  image: [],\n  video: [],\n  document: []\n};\n\nconst contextInfo = {\n  cantidadMensajes: 0,\n  tiposEncontrados: [],\n  tiposEnContexto: [], // ✨ tipos en el contexto histórico\n  tieneCaption: false,\n  indicesMensajes: {},\n  tieneContexto: false\n};\n\n// ============================================================================\n// PROCESAR CONTEXTO HISTÓRICO\n// ============================================================================\nconst contextosUnicos = new Set();\n\nitems.forEach((item, index) => {\n  const data = item.json || {};\n  \n  // ✅ VERIFICAR SI ESTE ITEM TIENE CONTEXTO\n  if (data.contexto && typeof data.contexto === 'object') {\n    const ctx = data.contexto;\n    \n    const contextoKey = JSON.stringify({\n      tipo: ctx.tipo,\n      sentido: ctx.sentido,\n      detalle: ctx.detalle || ctx.texto || ctx.url || ''\n    });\n    \n    if (!contextosUnicos.has(contextoKey)) {\n      contextosUnicos.add(contextoKey);\n      contextInfo.tieneContexto = true;\n      \n      // ✨ Registrar tipos en contexto\n      if (ctx.tipo && !contextInfo.tiposEnContexto.includes(ctx.tipo)) {\n        contextInfo.tiposEnContexto.push(ctx.tipo);\n      }\n      \n      // ✨ Guardar contexto raw para extracción posterior\n      contextoHistoricoRaw.push({\n        tipo: ctx.tipo,\n        sentido: ctx.sentido,\n        detalle: limpiarTexto(ctx.detalle || ctx.texto || '')\n      });\n      \n      const emisor = ctx.sentido === 'in' ? 'Usuario' : 'Asistente';\n      \n      const tipoEspanol = {\n        'image': 'una imagen',\n        'audio': 'un audio',\n        'video': 'un video',\n        'document': 'un documento',\n        'text': 'texto'\n      };\n      \n      let contenidoContexto = '';\n      \n      // ✅ PROCESAR SEGÚN TIPO DE CONTEXTO\n      if (ctx.tipo === 'text') {\n        contenidoContexto = `[${emisor}]: ${limpiarTexto(ctx.detalle || ctx.texto || '')}`;\n      } else {\n        const tipoTexto = tipoEspanol[ctx.tipo] || ctx.tipo;\n        const detalle = limpiarTexto(ctx.detalle || ctx.texto || '');\n        \n        if (detalle) {\n          contenidoContexto = `[${emisor} envió ${tipoTexto} previamente]:\\n\"${detalle}\"`;\n        } else {\n          contenidoContexto = `[${emisor} envió ${tipoTexto}]`;\n        }\n      }\n      \n      if (contenidoContexto) {\n        contextoHistorico.push(contenidoContexto);\n      }\n    }\n  }\n});\n\n// ============================================================================\n// PROCESAR MENSAJES ACTUALES\n// ============================================================================\nitems.forEach((item, index) => {\n  const data = item.json || {};\n  console.log(`Procesando item ${index}:`, JSON.stringify(data, null, 2));\n  \n  const tipo = data.tipo || 'text';\n  let contenido = '';\n  \n  if (tipo === 'audio') {\n    tieneAudioEnContenido = true;\n  }\n  \n  // ✅ OBTENER CONTENIDO SEGÚN TIPO (con fallbacks extra)\n  switch (tipo) {\n    case 'text':\n      contenido =\n        data.texto ||\n        data.mensaje ||\n        data.contenido ||\n        data.text ||\n        '';\n      break;\n    case 'audio':\n      contenido =\n        data.audio ||\n        data.texto ||\n        data.detalle ||\n        data.text ||\n        '';\n      break;\n    case 'image':\n      contenido =\n        data.image ||\n        data.texto ||\n        data.detalle ||\n        data.text ||\n        '';\n      break;\n    case 'video':\n      contenido =\n        data.video ||\n        data.texto ||\n        data.detalle ||\n        data.text ||\n        '';\n      break;\n    case 'document':\n      contenido =\n        data.document ||\n        data.texto ||\n        data.detalle ||\n        data.text ||\n        '';\n      break;\n    default:\n      contenido =\n        data.texto ||\n        data.mensaje ||\n        data.contenido ||\n        data.text ||\n        '';\n  }\n\n  const caption =\n    data.caption ||\n    data.texto_adicional ||\n    '';\n\n  if (contenido) {\n    const contenidoProcesado = {\n      texto: limpiarTexto(contenido),\n      caption: limpiarTexto(caption),\n      indice: index,\n      procesadoCorrectamente: data.procesadoCorrectamente !== false\n    };\n    \n    if (!mensajesPorTipo[tipo]) {\n      mensajesPorTipo[tipo] = [];\n    }\n    mensajesPorTipo[tipo].push(contenidoProcesado);\n    \n    contextInfo.cantidadMensajes++;\n    if (!contextInfo.tiposEncontrados.includes(tipo)) {\n      contextInfo.tiposEncontrados.push(tipo);\n    }\n    if (caption) {\n      contextInfo.tieneCaption = true;\n    }\n    if (tipo !== 'text') {\n      tieneMultimedia = true;\n    }\n    \n    if (detectarSentimiento(contenido) || detectarSentimiento(caption)) {\n      esUrgente = true;\n    }\n  }\n});\n\n// ✨ NUEVO: Detectar si el mensaje actual hace referencia a contenido previo\nlet referenciaDetectada = null;\nlet contenidoReferenciado = '';\n\nif (mensajesPorTipo.text.length > 0 && contextInfo.tiposEnContexto.length > 0) {\n  const textoActual = mensajesPorTipo.text.map(m => m.texto).join(' ');\n  referenciaDetectada = detectarReferencia(textoActual, contextInfo.tiposEnContexto);\n  \n  // ✨ Si hay referencia, extraer el contenido exacto referenciado\n  if (referenciaDetectada && contextoHistoricoRaw.length > 0) {\n    // Buscar el último mensaje del tipo referenciado enviado por el usuario\n    for (let i = contextoHistoricoRaw.length - 1; i >= 0; i--) {\n      const ctx = contextoHistoricoRaw[i];\n      if (ctx.tipo === referenciaDetectada && ctx.sentido === 'in') {\n        contenidoReferenciado = ctx.detalle;\n        break;\n      }\n    }\n  }\n}\n\n// ============================================================================\n// CONSTRUIR MENSAJE ESTRUCTURADO\n// ============================================================================\n\n// ✨ Si hay referencia detectada, agregar banner de alerta\nif (referenciaDetectada) {\n  mensajeCompleto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n  mensajeCompleto.push(\"🚨 INSTRUCCIÓN CRÍTICA PARA LA IA - LEE ESTO PRIMERO\");\n  mensajeCompleto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n  mensajeCompleto.push(\"\");\n  \n  const instruccionExplicita = {\n    'audio': `SITUACIÓN: El usuario escribió \"escucha\" (u otra palabra de referencia).\n\nSIGNIFICADO: NO significa \"por favor escúchame ahora\".\nSIGNIFICA: \"Responde sobre lo que dije en el audio que te envié antes\".\n\nCONTENIDO DEL AUDIO QUE EL USUARIO ENVIÓ:\n\"${contenidoReferenciado}\"\n\nINSTRUCCIÓN: Responde DIRECTAMENTE a lo que el usuario dijo en ese audio, como si acabara de decírtelo en este momento.\n\n❌ NO DIGAS:\n- \"Sí, te escucho\"\n- \"Escuché tu audio\"\n- \"Recibí tu mensaje\"\n- \"Gracias por tu audio\"\n\n✅ RESPONDE DIRECTAMENTE:\nSi el audio decía \"${contenidoReferenciado}\", responde de forma natural como si te lo acabara de decir cara a cara.\n\nEJEMPLO:\nSi el audio decía \"¿Cómo estás?\" → Responde: \"¡Hola! Todo bien por acá 💚 ¿Y vos cómo estás?\"`,\n\n    'image': `SITUACIÓN: El usuario escribió \"mira\" (u otra palabra de referencia).\n\nSIGNIFICADO: \"Responde sobre la imagen que te envié antes\".\n\nCONTENIDO DE LA IMAGEN:\n\"${contenidoReferenciado}\"\n\nINSTRUCCIÓN: Responde directamente sobre lo que viste en esa imagen.\n\n❌ NO DIGAS: \"Vi tu imagen\", \"Recibí tu foto\"\n✅ RESPONDE: Directamente sobre el contenido de la imagen`,\n\n    'video': `SITUACIÓN: El usuario escribió \"ve\" (u otra palabra de referencia).\n\nSIGNIFICADO: \"Responde sobre el video que te envié antes\".\n\nCONTENIDO DEL VIDEO:\n\"${contenidoReferenciado}\"\n\nINSTRUCCIÓN: Responde directamente sobre lo que viste en ese video.\n\n❌ NO DIGAS: \"Vi tu video\", \"Recibí tu video\"\n✅ RESPONDE: Directamente sobre el contenido del video`,\n\n    'document': `SITUACIÓN: El usuario hace referencia a un documento.\n\nSIGNIFICADO: \"Responde sobre el documento que te envié antes\".\n\nCONTENIDO DEL DOCUMENTO:\n\"${contenidoReferenciado}\"\n\nINSTRUCCIÓN: Responde directamente sobre ese documento.`\n  };\n  \n  mensajeCompleto.push(instruccionExplicita[referenciaDetectada]);\n  mensajeCompleto.push(\"\");\n  mensajeCompleto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n  mensajeCompleto.push(\"\");\n}\n\n// 📜 CONTEXTO PREVIO\nif (contextoHistorico.length > 0) {\n  mensajeCompleto.push(\"📜 CONTEXTO DE CONVERSACIÓN PREVIA:\");\n  if (referenciaDetectada) {\n    mensajeCompleto.push(\"⚠️ El usuario está haciendo referencia a este contenido ⚠️\");\n  }\n  mensajeCompleto.push(\"\");\n  contextoHistorico.forEach(ctx => {\n    mensajeCompleto.push(ctx);\n  });\n  mensajeCompleto.push(\"\");\n  mensajeCompleto.push(\"─────────────────────────────────\");\n  mensajeCompleto.push(\"📨 MENSAJE ACTUAL DEL USUARIO:\");\n  mensajeCompleto.push(\"\");\n}\n\n// ⚠️ URGENCIA\nif (esUrgente) {\n  mensajeCompleto.push(\"⚠️ MENSAJE CON INDICADORES DE URGENCIA DETECTADOS\");\n  mensajeCompleto.push(\"\");\n}\n\n// 📝 MENSAJES DE TEXTO\nif (mensajesPorTipo.text.length > 0) {\n  if (mensajesPorTipo.text.length === 1) {\n    mensajeCompleto.push(\"📝 MENSAJE DEL USUARIO:\");\n    mensajeCompleto.push(mensajesPorTipo.text[0].texto);\n  } else {\n    mensajeCompleto.push(\"📝 MENSAJES DEL USUARIO:\");\n    mensajesPorTipo.text.forEach((msg, idx) => {\n      mensajeCompleto.push(`${idx + 1}. ${msg.texto}`);\n    });\n  }\n  mensajeCompleto.push(\"\");\n}\n\n// 🎤 AUDIO\nif (mensajesPorTipo.audio.length > 0) {\n  mensajeCompleto.push(\"🎤 TRANSCRIPCIÓN DE AUDIO:\");\n  mensajesPorTipo.audio.forEach((audio, idx) => {\n    if (mensajesPorTipo.audio.length > 1) {\n      mensajeCompleto.push(`\\nAudio ${idx + 1}:`);\n    }\n    mensajeCompleto.push(audio.texto);\n    if (audio.caption) {\n      mensajeCompleto.push(`[Contexto del usuario: ${audio.caption}]`);\n    }\n    if (!audio.procesadoCorrectamente) {\n      mensajeCompleto.push(`[⚠️ Este audio no se procesó correctamente]`);\n    }\n  });\n  mensajeCompleto.push(\"\");\n}\n\n// 🖼️ IMAGEN\nif (mensajesPorTipo.image.length > 0) {\n  mensajeCompleto.push(\"🖼️ ANÁLISIS DE IMAGEN(ES):\");\n  mensajesPorTipo.image.forEach((imagen, idx) => {\n    if (mensajesPorTipo.image.length > 1) {\n      mensajeCompleto.push(`\\n--- Imagen ${idx + 1} ---`);\n    }\n    mensajeCompleto.push(imagen.texto);\n    if (imagen.caption) {\n      mensajeCompleto.push(`[Caption del usuario: \"${imagen.caption}\"]`);\n    }\n    if (!imagen.procesadoCorrectamente) {\n      mensajeCompleto.push(`[⚠️ Esta imagen no se procesó correctamente]`);\n    }\n  });\n  mensajeCompleto.push(\"\");\n}\n\n// 🎥 VIDEO\nif (mensajesPorTipo.video.length > 0) {\n  mensajeCompleto.push(\"🎥 ANÁLISIS DE VIDEO:\");\n  mensajesPorTipo.video.forEach((video, idx) => {\n    if (mensajesPorTipo.video.length > 1) {\n      mensajeCompleto.push(`\\n--- Video ${idx + 1} ---`);\n    }\n    mensajeCompleto.push(video.texto);\n    if (video.caption) {\n      mensajeCompleto.push(`[Descripción del usuario: \"${video.caption}\"]`);\n    }\n    if (!video.procesadoCorrectamente) {\n      mensajeCompleto.push(`[⚠️ Este video no se procesó correctamente]`);\n    }\n  });\n  mensajeCompleto.push(\"\");\n}\n\n// 📄 DOCUMENTOS\nif (mensajesPorTipo.document.length > 0) {\n  mensajeCompleto.push(\"📄 DOCUMENTO(S) ADJUNTO(S):\");\n  mensajesPorTipo.document.forEach((doc, idx) => {\n    if (mensajesPorTipo.document.length > 1) {\n      mensajeCompleto.push(`\\n--- Documento ${idx + 1} ---`);\n    }\n    mensajeCompleto.push(doc.texto);\n    if (doc.caption) {\n      mensajeCompleto.push(`[Nota del usuario: \"${doc.caption}\"]`);\n    }\n    if (!doc.procesadoCorrectamente) {\n      mensajeCompleto.push(`[⚠️ Este documento no se procesó correctamente]`);\n    }\n  });\n  mensajeCompleto.push(\"\");\n}\n\n// ✨ RESUMEN DE CONTEXTO\nconst resumenContexto = [];\n\nif (referenciaDetectada) {\n  resumenContexto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n  resumenContexto.push(\"🎯 RECORDATORIO FINAL - MUY IMPORTANTE\");\n  resumenContexto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n  resumenContexto.push(\"\");\n  \n  const recordatorioPorTipo = {\n    'audio': `El usuario dijo en su audio: \"${contenidoReferenciado}\"\n\nCuando escribió algo como \"escucha\", está pidiendo que respondas a ESO.\n\nTu respuesta debe ser natural, como si acabara de decírtelo ahora mismo.\n\nNO uses frases como \"sí, te escucho\", \"escuché tu audio\", etc.\nResponde DIRECTAMENTE al contenido.`,\n\n    'image': `La imagen mostraba: \"${contenidoReferenciado}\"\n\nResponde sobre el contenido de esa imagen de forma natural.`,\n\n    'video': `El video mostraba: \"${contenidoReferenciado}\"\n\nResponde sobre el contenido de ese video de forma natural.`,\n\n    'document': `El documento contenía: \"${contenidoReferenciado}\"\n\nResponde sobre el contenido de ese documento de forma natural.`\n  };\n  \n  resumenContexto.push(recordatorioPorTipo[referenciaDetectada]);\n  resumenContexto.push(\"\");\n  resumenContexto.push(\"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\");\n}\n\nresumenContexto.push(\"\");\nresumenContexto.push(\"📊 RESUMEN DE CONTEXTO:\");\nresumenContexto.push(`- Total de elementos en mensaje actual: ${contextInfo.cantidadMensajes}`);\nresumenContexto.push(`- Tipos de contenido actual: ${contextInfo.tiposEncontrados.join(', ') || 'ninguno'}`);\n\nif (contextInfo.tieneContexto) {\n  resumenContexto.push(`- Hay ${contextoHistorico.length} mensaje(s) en el contexto previo`);\n  resumenContexto.push(`- Tipos en contexto previo: ${contextInfo.tiposEnContexto.join(', ')}`);\n}\n\nif (referenciaDetectada) {\n  resumenContexto.push(`- REFERENCIA DETECTADA: ${String(referenciaDetectada).toUpperCase()}`);\n  resumenContexto.push(`- Contenido referenciado: \"${contenidoReferenciado}\"`);\n}\n\nif (tieneMultimedia) {\n  resumenContexto.push(`- Mensaje actual contiene multimedia: Sí`);\n}\n\nif (esUrgente) {\n  resumenContexto.push(`- Nivel de prioridad: ALTA (urgencia detectada)`);\n}\n\nif (contextInfo.tieneCaption) {\n  resumenContexto.push(`- El usuario agregó descripciones adicionales a los archivos`);\n}\n\n// Lógica de respuesta por audio\nlet debeResponderConAudio = false;\nif (tipoRespuesta === 2) {\n  debeResponderConAudio = true;\n} else if (tipoRespuesta === 3) {\n  debeResponderConAudio = tieneAudioEnContenido;\n}\n\nconst output = {\n  contenido: mensajeCompleto.join(\"\\n\"),\n  resumenContexto: resumenContexto.join(\"\\n\"),\n  chat_id: chatId,\n  telefono: telefono,\n  tipo_respuesta: tipoRespuesta,\n  debe_responder_audio: debeResponderConAudio,\n  tiene_referencia: referenciaDetectada !== null,\n  tipo_referencia: referenciaDetectada,\n  contenido_referenciado: contenidoReferenciado,\n  metadata: {\n    chatId: chatId,\n    telefono: telefono,\n    timestamp: timestamp,\n    tieneMultimedia: tieneMultimedia,\n    esUrgente: esUrgente,\n    cantidadElementos: contextInfo.cantidadMensajes,\n    tiposPresentes: contextInfo.tiposEncontrados,\n    tiposEnContexto: contextInfo.tiposEnContexto,\n    tieneCaption: contextInfo.tieneCaption,\n    tieneContexto: contextInfo.tieneContexto,\n    tieneAudioEnContenido: tieneAudioEnContenido,\n    referenciaDetectada: referenciaDetectada,\n    contenidoReferenciado: contenidoReferenciado,\n    tipoRespuesta: tipoRespuesta,\n    cantidadContextos: contextoHistorico.length,\n    instruccionesEspeciales: esUrgente\n      ? \"PRIORIDAD ALTA: El usuario muestra signos de urgencia o frustración. Responder de manera empática y con soluciones inmediatas.\"\n      : referenciaDetectada\n        ? `REFERENCIA DETECTADA: Usuario se refiere a ${referenciaDetectada}. Contenido: \"${contenidoReferenciado}\". Responder DIRECTAMENTE a ese contenido sin frases meta-referenciales.`\n        : \"Responder de manera profesional y completa.\",\n    estadisticas: {\n      mensajesTexto: mensajesPorTipo.text.length,\n      audiosTranscritos: mensajesPorTipo.audio.length,\n      imagenesAnalizadas: mensajesPorTipo.image.length,\n      videosAnalizados: mensajesPorTipo.video.length,\n      documentosProcesados: mensajesPorTipo.document.length\n    }\n  }\n};\n\n// Validación final\nif (\n  !output.contenido ||\n  output.contenido.trim() === '' ||\n  output.contenido.trim() === '📊 RESUMEN DE CONTEXTO:'\n) {\n  console.log(\"⚠️ No se pudo construir contenido. Datos recibidos:\", JSON.stringify(items, null, 2));\n  \n  return [{\n    json: {\n      contenido: \"No se pudo procesar el contenido del mensaje. Por favor, intenta enviarlo nuevamente.\",\n      debe_responder_audio: false,\n      chat_id: chatId,\n      telefono: telefono,\n      metadata: {\n        error: true,\n        chatId: chatId,\n        telefono: telefono,\n        timestamp: timestamp,\n        mensaje: \"Error en el procesamiento del contenido\",\n        datosRecibidos: items.length\n      }\n    }\n  }];\n}\n\nconsole.log(\"✅ Output generado correctamente:\", JSON.stringify(output, null, 2));\n\nreturn [{\n  json: output\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1024,
+        1456
+      ],
+      "id": "0bf7611a-66ff-43dc-83ae-1b3e5fa890a7",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "model": "tts-1-hd",
+        "input": "={{ $json.output }}",
+        "voice": "onyx",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        352,
+        1216
+      ],
+      "id": "a22bda89-8093-4697-9402-0bb30daf9444",
+      "name": "Generate audio",
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "destinationKey": "audio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        704,
+        1328
+      ],
+      "id": "fc23390f-cb69-4e0d-8f11-bb6371a77e97",
+      "name": "AUDIO TO BASE64"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer contexto del item si existe\nconst item = $input.item.json;\n\n// Si no hay contexto o el contexto no tiene URL, pasar el item original\nif (!item.hasContexto || !item.contexto || !item.contexto.url) {\n  return {\n    json: {\n      ...item,\n      contextNeedProcessing: false,\n      contextType: null,\n      contextUrl: null,\n      originalItem: item\n    }\n  };\n}\n\n// Si hay contexto con URL, prepararlo para procesamiento\nconst contexto = item.contexto;\n\n// Solo procesar si es media (no texto)\nif (contexto.tipo === 'text') {\n  return {\n    json: {\n      ...item,\n      contextNeedProcessing: false,\n      contextType: 'text',\n      contextUrl: null,\n      contextText: contexto.texto,\n      originalItem: item\n    }\n  };\n}\n\n// Media que necesita procesamiento\nreturn {\n  json: {\n    ...item,\n    contextNeedProcessing: true,\n    contextType: contexto.tipo,\n    contextUrl: contexto.url,\n    contextSentido: contexto.sentido,\n    originalItem: item\n  }\n};\n"
+      },
+      "id": "c6413e01-ea63-4783-8fd8-3a3119e14efb",
+      "name": "Extract Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5920,
+        1504
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=Analiza esta imagen en detalle. Describe:\n1. Qué se ve en la imagen\n2. Elementos principales\n3. Texto visible (si hay)\n4. Contexto o situación\n5. Cualquier detalle relevante\n\nEsta imagen fue compartida por el usuario en un mensaje anterior y ahora se está refiriendo a ella.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "id": "6d086942-1179-4d1e-9256-7315952ac503",
+      "name": "Analyze Context Image",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        -4400,
+        768
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"tipo\": \"{{ $('Split Out1').item.json.tipo }}\",\n  \"texto\": \"{{ $('Split Out1').item.json.texto || '' }}\",\n  \"contexto\": {\n    \"tipo\": \"{{ $('Split Out1').item.json.contexto?.tipo || '' }}\",\n    \"sentido\": \"{{ $('Split Out1').item.json.contexto?.sentido || '' }}\",\n    \"detalle\": \"{{ $json.content?.parts?.[0]?.text || $json.text || $json.detalle ||'' }}\"\n  },\n  \"url\": \"{{ $('Split Out1').item.json.url || '' }}\",\n  \"orden\": {{ $('Split Out1').item.json.orden || 0 }}\n}\n",
+        "options": {}
+      },
+      "id": "e47b4cf4-415a-456e-aded-f6a764b8a988",
+      "name": "Format Context Image Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3888,
+        1072
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.contexto.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "831ea8f2-6441-4968-8fd2-9ffd09152cb2",
+      "name": "HTTP Request Context Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4624,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "temperature": 0
+        }
+      },
+      "id": "aee608e8-55d3-4120-a57e-8f0894321860",
+      "name": "Transcribe Context Audio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        -4400,
+        960
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "XMeyi1TreM1gEH1N",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.contexto.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "8b5c4ff1-c1a6-46ef-b8b6-49b37012fe7f",
+      "name": "HTTP Request Context Video",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4624,
+        1152
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.contextUrl }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "f9ce7e21-74c6-4115-9121-332c670004df",
+      "name": "HTTP Request Context Document",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4624,
+        1344
+      ]
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "id": "a447f28e-6664-496a-8fad-51d2c70f510e",
+      "name": "Merge Contexts",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -3296,
+        1408
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nreturn items.map((item, index) => {\n  const bodyContenido = item.json.webhookData.body.contenido;\n  \n  if (Array.isArray(bodyContenido)) {\n    const updatedContenido = bodyContenido.map((content, contentIndex) => {\n      // Clonar el objeto content\n      const updatedContent = { ...content };\n      \n      // Añadir orden numérico\n      updatedContent.orden = contentIndex + 1;\n\n      \n      // Procesar URL principal del contenido\n      if (updatedContent.url) {\n        updatedContent.url = updatedContent.url.replace('dev2.', 'dev.');\n      }\n      \n      // Procesar URL dentro del contexto (si existe)\n      if (updatedContent.contexto && typeof updatedContent.contexto === 'object') {\n        updatedContent.contexto = { ...updatedContent.contexto };\n        \n        if (updatedContent.contexto.url) {\n          updatedContent.contexto.url = updatedContent.contexto.url.replace('dev.', 'dev2.');\n        }\n      }\n      \n      return updatedContent;\n    });\n    \n    return {\n      json: {\n        body_contenido: updatedContenido,\n      }\n    };\n  }\n  \n  return {\n    json: {\n      ...item.json,\n      orden_item: index + 1\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5712,
+        1504
+      ],
+      "id": "6f9ed44e-80ce-4e71-a392-82f32643967d",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body_contenido ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -5504,
+        1504
+      ],
+      "id": "b9996d44-db3d-42e0-9504-114a0c09c821",
+      "name": "Split Out1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Split Out1').item.json.contexto.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "4b54d088-a478-4ceb-ad0a-cb5d6f07da89",
+      "name": "HTTP Request Context Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4624,
+        768
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-pro",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-pro"
+        },
+        "text": "\"Transcribe el contenido hablado de este video.\"\n\"¿Qué sucede en este video? Describe los eventos principales.\"\n\"¿Cuál es el mensaje principal de este video?\"",
+        "inputType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -4400,
+        1152
+      ],
+      "id": "a424e213-2f97-4288-8c6c-36a857dc94bf",
+      "name": "Analyze video1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "K1Q3gfIbAj0Qi9eA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "document",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-pro-latest",
+          "mode": "list",
+          "cachedResultName": "models/gemini-pro-latest"
+        },
+        "text": "",
+        "inputType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -4400,
+        1344
+      ],
+      "id": "c17a6345-aa6b-439d-b018-06b15cc345e1",
+      "name": "Analyze document1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "K1Q3gfIbAj0Qi9eA",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => ({ json: item.json }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4912,
+        1520
+      ],
+      "id": "f78a8a71-1e4a-4a93-9a59-30e0babd5f48",
+      "name": "Concatena items"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "89cdeba6-5dda-4033-b580-09aa69703858"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9d5cbf28-f6e4-4880-a996-ec6b7b7ac445",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "488fc823-8e50-4b7d-a26d-fd8c114f75db",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d264841d-27ab-4c23-a968-19b9af20f482",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -3696,
+        1040
+      ],
+      "id": "77b46235-1e1d-4c71-8388-e0ded5c3e0e8",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1657f68e-40ec-4673-af58-5fad68ded70d",
+              "leftValue": "={{ $json.contexto.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -5264,
+        1504
+      ],
+      "id": "c1558e86-2295-493b-aca2-03986d629cd3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0999ff3d-81dc-4ee7-8a24-cabd69ac12bc",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "2af7e4e7-6c42-4eaa-816d-5831869044ac"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6d718b19-0a66-4d76-8472-9991580140dc",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "video"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "46b17574-9c9a-4720-a44a-13a82748f8e2",
+                    "leftValue": "={{ $json.contexto.tipo }}",
+                    "rightValue": "document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "document"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -4912,
+        1040
+      ],
+      "id": "420ff80b-9b64-4996-a4b7-c6e540a44a2a",
+      "name": "Switch3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1bda7931-2ef8-43f7-b550-5818e9e3c8b4",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "iamge"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7ec11bab-981d-4398-b12e-a13395a6a5ae"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "732f18dc-857f-4457-9437-5296d1b5c0d7",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "video",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "video"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b92af857-29d3-41e4-9b12-6facba935a41",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "document",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "document"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fed9abf0-6ab0-4c22-b973-cfb736d3d906",
+                    "leftValue": "={{ $json.tipo }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -2576,
+        1408
+      ],
+      "id": "d79cf509-b75c-4cd2-9b73-82d3447ebae7",
+      "name": "Switch4"
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  \n  const content = item.json.content || '';\n  \n  // Limpiar completamente el string\n  const contentLimpio = content\n    .replace(/\\\\\"/g, '')      // Quita \\\"\n    .replace(/\"/g, '')        // Quita \"\n    .replace(/\\\\'/g, '')      // Quita \\'\n    .replace(/'/g, '')        // Quita '\n    .replace(/\\\\\\\\/g, '')     // Quita \\\\\n    .replace(/\\\\n/g, ' ')     // Convierte \\n en espacio\n    .replace(/\\\\r/g, '')      // Quita \\r\n    .replace(/\\\\t/g, ' ')     // Convierte \\t en espacio\n    .replace(/\\s+/g, ' ')     // Múltiples espacios a uno solo\n    .trim();                  // Quita espacios al inicio y final\n  \n  const mensajeFormateado = {\n    detalle: contentLimpio  \n  };\n  \n  item.json = mensajeFormateado;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4192,
+        768
+      ],
+      "id": "6cc80451-981d-4a25-8a9e-5aacc3518f40",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.motor_tts }}",
+                    "rightValue": "openai",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b341e90a-ae90-41c4-8191-c9b2e8cb2c92"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "openai"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e71637e6-fe7c-4df4-afb9-2c284b9d10bb",
+                    "leftValue": "={{ $json.motor_tts }}",
+                    "rightValue": "eleven",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "elevenlabs"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        64,
+        1232
+      ],
+      "id": "354a0ac6-894f-4ec1-9c2c-7d27a2937586",
+      "name": "Switch5"
+    },
+    {
+      "parameters": {
+        "resource": "speech",
+        "voice": {
+          "__rl": true,
+          "value": "qHkrJuifPpn95wK3rm2A",
+          "mode": "id"
+        },
+        "text": "={{ $json.output }}",
+        "additionalOptions": {},
+        "requestOptions": {}
+      },
+      "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+      "typeVersion": 1,
+      "position": [
+        352,
+        1376
+      ],
+      "id": "de568614-ec73-4c3a-8970-87835ff8a1b9",
+      "name": "Convert text to speech",
+      "credentials": {
+        "elevenLabsApi": {
+          "id": "7tuPMUT8LGLuJ8SV",
+          "name": "ElevenLabs YAYA"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "execution": {
+            "id": "1284",
+            "url": "https://n8n.global-tec.co/workflow/Gs8nQ6sBmXWgoX8M/executions/1284",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "description": "Request failed with status code 401",
+              "timestamp": 1763905996419,
+              "context": {
+                "data": {
+                  "type": "Buffer",
+                  "data": [
+                    123,
+                    34,
+                    100,
+                    101,
+                    116,
+                    97,
+                    105,
+                    108,
+                    34,
+                    58,
+                    123,
+                    34,
+                    115,
+                    116,
+                    97,
+                    116,
+                    117,
+                    115,
+                    34,
+                    58,
+                    34,
+                    113,
+                    117,
+                    111,
+                    116,
+                    97,
+                    95,
+                    101,
+                    120,
+                    99,
+                    101,
+                    101,
+                    100,
+                    101,
+                    100,
+                    34,
+                    44,
+                    34,
+                    109,
+                    101,
+                    115,
+                    115,
+                    97,
+                    103,
+                    101,
+                    34,
+                    58,
+                    34,
+                    84,
+                    104,
+                    105,
+                    115,
+                    32,
+                    114,
+                    101,
+                    113,
+                    117,
+                    101,
+                    115,
+                    116,
+                    32,
+                    101,
+                    120,
+                    99,
+                    101,
+                    101,
+                    100,
+                    115,
+                    32,
+                    121,
+                    111,
+                    117,
+                    114,
+                    32,
+                    113,
+                    117,
+                    111,
+                    116,
+                    97,
+                    32,
+                    111,
+                    102,
+                    32,
+                    49,
+                    48,
+                    48,
+                    48,
+                    48,
+                    46,
+                    32,
+                    89,
+                    111,
+                    117,
+                    32,
+                    104,
+                    97,
+                    118,
+                    101,
+                    32,
+                    51,
+                    57,
+                    32,
+                    99,
+                    114,
+                    101,
+                    100,
+                    105,
+                    116,
+                    115,
+                    32,
+                    114,
+                    101,
+                    109,
+                    97,
+                    105,
+                    110,
+                    105,
+                    110,
+                    103,
+                    44,
+                    32,
+                    119,
+                    104,
+                    105,
+                    108,
+                    101,
+                    32,
+                    49,
+                    52,
+                    54,
+                    32,
+                    99,
+                    114,
+                    101,
+                    100,
+                    105,
+                    116,
+                    115,
+                    32,
+                    97,
+                    114,
+                    101,
+                    32,
+                    114,
+                    101,
+                    113,
+                    117,
+                    105,
+                    114,
+                    101,
+                    100,
+                    32,
+                    102,
+                    111,
+                    114,
+                    32,
+                    116,
+                    104,
+                    105,
+                    115,
+                    32,
+                    114,
+                    101,
+                    113,
+                    117,
+                    101,
+                    115,
+                    116,
+                    46,
+                    34,
+                    125,
+                    125
+                  ]
+                },
+                "itemIndex": 0,
+                "runIndex": 0
+              },
+              "functionality": "regular",
+              "name": "NodeApiError",
+              "node": {
+                "parameters": {
+                  "resource": "speech",
+                  "operation": "textToSpeech",
+                  "voice": {
+                    "__rl": true,
+                    "value": "qHkrJuifPpn95wK3rm2A",
+                    "mode": "id"
+                  },
+                  "text": "={{ $json.output }}",
+                  "additionalOptions": {},
+                  "requestOptions": {}
+                },
+                "type": "@elevenlabs/n8n-nodes-elevenlabs.elevenLabs",
+                "typeVersion": 1,
+                "position": [
+                  384,
+                  1424
+                ],
+                "id": "de568614-ec73-4c3a-8970-87835ff8a1b9",
+                "name": "Convert text to speech",
+                "credentials": {
+                  "elevenLabsApi": {
+                    "id": "7tuPMUT8LGLuJ8SV",
+                    "name": "ElevenLabs account"
+                  }
+                }
+              },
+              "messages": [
+                "Request failed with status code 401"
+              ],
+              "httpCode": "401",
+              "message": "Authorization failed - please check your credentials",
+              "stack": "NodeApiError: Authorization failed - please check your credentials\n    at ExecuteSingleContext.httpRequestWithAuthentication (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/node-execution-context/utils/request-helper-functions.ts:1309:11)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ExecuteSingleContext.httpRequestWithAuthentication (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/node-execution-context/utils/request-helper-functions.ts:1685:11)\n    at RoutingNode.rawRoutingRequest (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/routing-node.ts:531:20)\n    at RoutingNode.makeRequest (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/routing-node.ts:725:19)\n    at async Promise.allSettled (index 0)\n    at RoutingNode.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/routing-node.ts:234:29)\n    at ExecuteContext.versionedNodeType.execute (/usr/local/lib/node_modules/n8n/src/node-types.ts:60:18)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1093:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_08b575bec2313d5d8a4cc75358971443/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1274:11)"
+            },
+            "lastNodeExecuted": "Convert text to speech",
+            "mode": "webhook"
+          },
+          "workflow": {
+            "id": "Gs8nQ6sBmXWgoX8M",
+            "name": "AgenteIA V2.0.3 - YAYA"
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "connection": "upgrade",
+            "host": "n8n.global-tec.co",
+            "x-real-ip": "52.232.200.168",
+            "x-forwarded-for": "52.232.200.168",
+            "x-forwarded-proto": "https",
+            "content-length": "107",
+            "accept": "*/*",
+            "authorization": "WsHoKTxo1Kq65gmnMXDtqJmX2crE0N7Xa9bdb7viKiVQNweN7IV9lp9Xyz92",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "chat_id": 66568,
+            "contenido": [
+              {
+                "tipo": "text",
+                "texto": "hola"
+              }
+            ],
+            "telefono": "573196233749",
+            "tipo_respuesta": 1
+          },
+          "webhookUrl": "https://n8n.global-tec.co/webhook/107d2f84-3fa9-4c8b-9ad9-0b6ba5db9049",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "CREAR JSON": {
+      "main": [
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Retorno ayuda1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retorno ayuda1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retorno ayuda1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retorno guardar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Retorno error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizacion Salida": {
+      "main": [
+        [
+          {
+            "node": "Respuesta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "CREAR JSON",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CREAR JSON",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Normalizacion Salida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizacion Salida1": {
+      "main": [
+        [
+          {
+            "node": "Respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract Contenido Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Contenido Array": {
+      "main": [
+        [
+          {
+            "node": "Process Each Content Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Each Content Item": {
+      "main": [
+        [
+          {
+            "node": "Extract Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze video": {
+      "main": [
+        [
+          {
+            "node": "Format Video Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Video Result": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Format Audio Result": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Format Image Result": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "Format Image Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze document": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Format Audio Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate audio": {
+      "main": [
+        [
+          {
+            "node": "AUDIO TO BASE64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "AUDIO TO BASE64": {
+      "main": [
+        [
+          {
+            "node": "Normalizacion Salida1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Context": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Context Image": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Context Image Result": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request Context Audio": {
+      "main": [
+        [
+          {
+            "node": "Transcribe Context Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe Context Audio": {
+      "main": [
+        [
+          {
+            "node": "Format Context Image Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Contexts": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request Context Image": {
+      "main": [
+        [
+          {
+            "node": "Analyze Context Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request Context Video": {
+      "main": [
+        [
+          {
+            "node": "Analyze video1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request Context Document": {
+      "main": [
+        [
+          {
+            "node": "Analyze document1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze video1": {
+      "main": [
+        [
+          {
+            "node": "Format Context Image Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze document1": {
+      "main": [
+        [
+          {
+            "node": "Format Context Image Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatena items": {
+      "main": [
+        [
+          {
+            "node": "Merge Contexts",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Merge Contexts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge Contexts",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Merge Contexts",
+            "type": "main",
+            "index": 2
+          }
+        ],
+        [
+          {
+            "node": "Merge Contexts",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Concatena items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request Context Image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request Context Audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request Context Video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request Context Document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analyze video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analyze document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Format Context Image Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch5": {
+      "main": [
+        [
+          {
+            "node": "Generate audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert text to speech",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert text to speech": {
+      "main": [
+        [
+          {
+            "node": "AUDIO TO BASE64",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7a47a3ca-951b-4ced-8f90-474fb8cfcb22",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0655755335afd99081d47a80645277b19a89aecf098dd33a3f34bd82f4f93f52"
+  },
+  "id": "Gs8nQ6sBmXWgoX8M",
+  "tags": [
+    {
+      "updatedAt": "2025-11-20T04:20:46.039Z",
+      "createdAt": "2025-11-20T04:20:46.039Z",
+      "id": "N4aFG2jGSn5gbsQd",
+      "name": "YAYA"
+    }
+  ]
+}
